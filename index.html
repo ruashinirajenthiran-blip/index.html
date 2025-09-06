@@ -70,22 +70,36 @@
               radial-gradient(circle at 90% 55%, #ff69b4 13px, transparent 14px);
   background-repeat:repeat-x;
 }
-  .candles {
-    position:absolute; top:-30px; left:50%; transform:translateX(-50%);
-    display:flex; gap:15px;
-  }
-  .candle {
-    width:12px; height:40px; background:#fff; border-radius:3px;
-    position:relative;
-  }
-  .flame {
-    position:absolute; top:-18px; left:50%; transform:translateX(-50%);
-    width:14px; height:20px; background:radial-gradient(circle,#fff,#ffcc00 60%,#ff9900 80%);
-    border-radius:50% 50% 60% 60%;
-    animation:flicker .2s infinite alternate;
-  }
-  @keyframes flicker { to { transform:translateX(-50%) scale(1.1); } }
-  .flame.off { display:none; }
+
+/* striped strawberry candles */
+.candle {
+  width:12px; height:40px; 
+  background: repeating-linear-gradient(
+    45deg,
+    #ffb6c1,   /* strawberry pink */
+    #ffb6c1 6px,
+    #ffffff 6px,
+    #ffffff 12px
+  );
+  border-radius:3px;
+  position:relative;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+}
+
+/* magical pink flames */
+.flame {
+  position:absolute; top:-18px; left:50%; transform:translateX(-50%);
+  width:14px; height:20px; 
+  background: radial-gradient(circle, #fff, #ff99cc 60%, #ff66cc 80%);
+  border-radius:50% 50% 60% 60%;
+  animation:flicker .2s infinite alternate;
+  box-shadow: 0 0 8px #ff99cc, 0 0 15px #ff66cc;
+}
+.flame.off { display:none; }
+
+@keyframes flicker { 
+  to { transform:translateX(-50%) scale(1.1); opacity:0.9; } 
+}
 
   button {
     margin-top:20px; padding:12px 20px; border:none; border-radius:10px;
