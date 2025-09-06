@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday Shreya 🎂</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Antique+Olive&display=swap" rel="stylesheet">
 <style>
 body {
   margin:0;
@@ -13,8 +13,8 @@ body {
   justify-content:center;
   align-items:center;
   min-height:100vh;
-  background:linear-gradient(135deg,#d9a7c7,#fffcdc,#a1c4fd,#c2e9fb);
-  font-family:"Nunito Sans",sans-serif;
+  background:linear-gradient(135deg,#c8b6ff,#a1c4fd,#ffffff);
+  font-family:"Antique Olive",sans-serif;
   color:#333;
   text-align:center;
   padding:20px;
@@ -23,7 +23,7 @@ body {
 
 h1 {
   font-size:2.2em;
-  margin-bottom:20px;
+  margin-bottom:15px;
   color:#6a11cb;
   transition:opacity 0.6s ease;
 }
@@ -31,81 +31,54 @@ h1.hidden { opacity:0; }
 
 .countdown {
   font-size:1.3em;
-  margin-bottom:40px;
+  margin-bottom:30px;
   color:#444;
   transition:opacity 0.6s ease;
 }
 .countdown.hidden { opacity:0; }
 
+.cake-container {
+  position:relative;
+  margin-bottom:25px;
+}
+
 .cake {
   position:relative;
   width:220px;
-  height:200px;
-  margin-bottom:20px;
+  height:150px;
   transition:opacity 0.8s ease, transform 0.8s ease;
 }
 .cake.hidden { opacity:0; transform:scale(0.5); }
 
-/* cake body */
 .cake-body {
-  position:absolute; bottom:0; width:100%; height:70%;
-  background:repeating-linear-gradient(
-    to bottom,
-    #ff4d6d,
-    #ff4d6d 25px,
-    #fff 25px,
-    #fff 50px
-  );
+  position:absolute; bottom:0; width:100%; height:100%;
+  background:linear-gradient(#ffb6c1,#ff4d6d);
   border-radius:15px;
-  border-top:25px solid #ffffff;
+  border-top:25px solid #fff;
   overflow:hidden;
 }
-.cake-body::before {
-  content:"";
+
+/* sprinkles */
+.sprinkle {
   position:absolute;
-  top:-25px; left:0;
-  width:100%; height:25px;
-  background:
-    radial-gradient(circle, #ff0000 2px, transparent 3px),
-    radial-gradient(circle, #00ccff 2px, transparent 3px),
-    radial-gradient(circle, #ffff66 2px, transparent 3px),
-    radial-gradient(circle, #66ff66 2px, transparent 3px),
-    radial-gradient(circle, #ff99ff 2px, transparent 3px);
-  background-size:20px 20px;
-}
-.cake-body::after {
-  content:"";
-  position:absolute;
-  top:-15px; left:0; right:0;
-  height:30px;
-  background: radial-gradient(circle at 10% 50%, #ffffff 12px, transparent 13px),
-              radial-gradient(circle at 30% 60%, #ffffff 15px, transparent 16px),
-              radial-gradient(circle at 50% 40%, #ffffff 10px, transparent 11px),
-              radial-gradient(circle at 70% 65%, #ffffff 18px, transparent 19px),
-              radial-gradient(circle at 90% 55%, #ffffff 13px, transparent 14px);
-  background-repeat:repeat-x;
+  width:8px;
+  height:8px;
+  border-radius:50%;
 }
 
-/* candle */
 .candle {
-  width:14px; height:45px;
-  background:repeating-linear-gradient(
-    45deg,
-    #ff4d6d,
-    #ff4d6d 6px,
-    #ffffff 6px,
-    #ffffff 12px
-  );
+  width:14px;
+  height:45px;
+  background:repeating-linear-gradient(45deg,#ff4d6d,#ff4d6d 6px,#fff 6px,#fff 12px);
   border-radius:3px;
   position:absolute;
-  top:-45px;
+  bottom:150px; /* attach to cake */
   left:50%;
   transform:translateX(-50%);
   box-shadow:0 0 4px rgba(0,0,0,0.3);
   cursor:pointer;
 }
 
-/* flame */
 .flame {
   position:absolute; top:-22px; left:50%; transform:translateX(-50%);
   width:16px; height:24px;
@@ -117,12 +90,7 @@ h1.hidden { opacity:0; }
 .flame.off { display:none; }
 
 @keyframes flicker { to { transform:translateX(-50%) scale(1.15); opacity:0.9; } }
-
-@keyframes flash {
-  0% { transform:translateX(-50%) scale(1); opacity:1; box-shadow:0 0 10px #ffeb3b,0 0 20px #ff9800; }
-  50% { transform:translateX(-50%) scale(1.4); opacity:1; box-shadow:0 0 25px #ffeb3b,0 0 40px #ff5722; }
-  100% { transform:translateX(-50%) scale(0.2); opacity:0; box-shadow:0 0 5px #ffeb3b,0 0 10px #ff9800; }
-}
+@keyframes flash { 0%{transform:translateX(-50%) scale(1);opacity:1;}50%{transform:translateX(-50%) scale(1.4);opacity:1;}100%{transform:translateX(-50%) scale(0.2);opacity:0;} }
 .flame.flash { animation:flash 0.6s forwards; }
 
 .instruction {
@@ -133,51 +101,77 @@ h1.hidden { opacity:0; }
 }
 .instruction.hidden { opacity:0; }
 
-/* gift box */
 .gift {
   display:none;
   margin-top:20px;
   font-size:1.2em;
-  color:#6a11cb;
+  color:#fff;
   padding:20px;
-  border:2px solid #6a11cb;
   border-radius:12px;
-  background:rgba(255,255,255,0.8);
-  max-width:500px;
+  background:#ff69b4;
+  width:250px;
+  position:relative;
   animation:pop 0.8s ease forwards;
+  box-shadow:0 0 15px rgba(255,105,180,0.6);
   transition:opacity 0.8s ease, transform 0.8s ease;
 }
-@keyframes pop {
-  from { transform:scale(0.5); opacity:0; }
-  to { transform:scale(1); opacity:1; }
+.gift::before {
+  content:"";
+  position:absolute;
+  top:10px; left:50%;
+  width:180px; height:10px;
+  background:#fff;
+  transform:translateX(-50%);
+  border-radius:5px;
 }
+.gift::after {
+  content:"";
+  position:absolute;
+  top:0; left:50%;
+  width:10px; height:50px;
+  background:#fff;
+  transform:translateX(-50%);
+  border-radius:5px;
+}
+
+@keyframes pop { from { transform:scale(0.5); opacity:0; } to { transform:scale(1); opacity:1; } }
 .gift.hidden { opacity:0; transform:scale(0.5); }
 
-.message {
-  font-size:1.05em;
-  line-height:1.6;
-  margin-bottom:20px;
-  color:#333;
-}
+.message { font-size:1em; line-height:1.5; margin-bottom:15px; }
 
 .claim-btn {
   padding:10px 20px;
-  background:#ff4d6d;
-  color:#fff;
+  background:#fff;
+  color:#ff69b4;
   border:none;
   border-radius:8px;
   font-size:1.1em;
   cursor:pointer;
   transition:0.3s;
 }
-.claim-btn:hover { background:#ff3355; }
+.claim-btn:hover { background:#ffe6f0; }
 
 #linkMessage {
   display:none;
   margin-top:15px;
   font-size:1.1em;
-  color:#ff5722;
+  color:#ffeb3b;
+  font-weight:bold;
+  text-shadow:0 0 3px #ff0000;
 }
+
+/* sparkles */
+.sparkle {
+  position:absolute;
+  width:5px;
+  height:5px;
+  background:yellow;
+  border-radius:50%;
+  opacity:0.8;
+  animation:twinkle 1s infinite alternate;
+}
+@keyframes twinkle { from {opacity:0.2;} to {opacity:1;} }
+
 </style>
 </head>
 <body>
@@ -185,8 +179,8 @@ h1.hidden { opacity:0; }
 <h1>Happy Birthday Shreya 🎉</h1>
 <div class="countdown">Countdown to your special day 🎂</div>
 
-<div class="cake">
-  <div class="cake-body"></div>
+<div class="cake-container">
+  <div class="cake"></div>
   <div class="candle">
     <div class="flame"></div>
   </div>
@@ -196,43 +190,67 @@ h1.hidden { opacity:0; }
 
 <div class="gift">
   <div class="message">
-    Dear Shreya, I would love to spoil you with gifts and cakes on your birthday, but since we live countries apart, I made you this little surprise. 💌  
-    Enjoy your day filled with blessings — you mean so much to me.  
-    You always make me smile by sending reels, even when I’m not always online.  
+    Dear Shreya, I would love to spoil you with gifts and cakes on your birthday, but since we live countries apart, I made you this little surprise. 💌<br>
+    Enjoy your day filled with blessings — you mean so much to me.<br>
+    You always make me smile by sending reels, even when I’m not always online.<br>
     Thank you for being my friend, I love you very much! 💖
   </div>
   <button class="claim-btn">🎁 Claim Your Gift</button>
   <div id="linkMessage">Surprise! Open Love and Deepspace app to receive your gift 💖</div>
 </div>
 
-<!-- birthday music -->
 <audio id="birthdayMusic" src="https://cdn.pixabay.com/download/audio/2021/09/01/audio_ef82d2f39c.mp3?filename=happy-birthday-24142.mp3" autoplay loop></audio>
 
 <script>
+const target=new Date("2025-10-13T00:00:00");
 const titleEl=document.querySelector("h1");
 const countdownEl=document.querySelector(".countdown");
 const instructionEl=document.querySelector(".instruction");
-let target=new Date("2025-10-13T00:00:00");
+const cake=document.querySelector(".cake");
+const candle=document.querySelector(".candle");
+const flame=document.querySelector(".flame");
+const gift=document.querySelector(".gift");
+const music=document.getElementById("birthdayMusic");
 
-setInterval(()=>{
+function updateCountdown(){
   let now=new Date();
   let diff=target-now;
   if(diff<=0){
     countdownEl.textContent="It’s your birthday today! Tap the candle 🎂";
-  } else {
+  }else{
     let days=Math.floor(diff/(1000*60*60*24));
     let hours=Math.floor((diff/(1000*60*60))%24);
     let mins=Math.floor((diff/1000/60)%60);
     countdownEl.textContent=`${days}d ${hours}h ${mins}m until your birthday 🎉`;
   }
-},1000);
+}
+setInterval(updateCountdown,1000);
 
-const flame=document.querySelector(".flame");
-const gift=document.querySelector(".gift");
-const cake=document.querySelector(".cake");
-const music=document.getElementById("birthdayMusic");
+function createSprinkles(){
+  for(let i=0;i<20;i++){
+    let s=document.createElement("div");
+    s.className="sprinkle";
+    s.style.top=Math.random()*140+"px";
+    s.style.left=Math.random()*210+"px";
+    s.style.background=["#ffeb3b","#00ccff","#ff99ff","#66ff66","#ffffff"][Math.floor(Math.random()*5)];
+    cake.appendChild(s);
+  }
+}
+createSprinkles();
 
-document.querySelector(".candle").addEventListener("click",()=>{
+function createSparkles(){
+  for(let i=0;i<10;i++){
+    let sp=document.createElement("div");
+    sp.className="sparkle";
+    sp.style.top=Math.random()*window.innerHeight+"px";
+    sp.style.left=Math.random()*window.innerWidth+"px";
+    sp.style.animationDuration=(0.5+Math.random())+"s";
+    document.body.appendChild(sp);
+  }
+}
+createSparkles();
+
+candle.addEventListener("click",()=>{
   flame.classList.add("flash");
   setTimeout(()=>{
     flame.classList.add("off");
@@ -245,14 +263,13 @@ document.querySelector(".candle").addEventListener("click",()=>{
 });
 
 document.querySelector(".claim-btn").addEventListener("click",()=>{
-  gift.classList.add("hidden");
-  // fade out music + gift together
+  // fade music and gift together
   let fadeOut=setInterval(()=>{
     if(music.volume>0.05){
       music.volume=Math.max(0,music.volume-0.05);
-      gift.style.opacity=music.volume; // sync gift opacity with music volume
+      gift.style.opacity=music.volume;
       gift.style.transform=`scale(${music.volume})`;
-    } else {
+    }else{
       clearInterval(fadeOut);
       music.pause();
       music.currentTime=0;
