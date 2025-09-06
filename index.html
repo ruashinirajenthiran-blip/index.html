@@ -46,8 +46,20 @@
     border-radius:50% 50% 60% 60%;
     animation:flicker .2s infinite alternate;
   }
-  @keyframes flicker { to { transform:translateX(-50%) scale(1.1); } }
-  .flame.off { display:none; }
+  @keyframes popIn {
+  0% { opacity:0; transform: scale(0.8); }
+  60% { opacity:1; transform: scale(1.1); }
+  100% { opacity:1; transform: scale(1); }
+}
+
+.countdown {
+  font-size:1.2em;
+  margin-bottom:50px;  /* extra space added */
+  color:#666;
+  animation: popIn 0.6s ease;
+}
+
+}
 
   button {
     margin-top:20px; padding:12px 20px; border:none; border-radius:10px;
@@ -96,6 +108,16 @@
     0% { transform:translateY(0) scale(1); opacity:1; }
     100% { transform:translateY(-120vh) scale(1.4); opacity:0; }
   }
+
+  .sparkle {
+    display:inline-block;
+    animation: sparkle 1.2s infinite alternate;
+  }
+
+  @keyframes sparkle {
+    0% { text-shadow: 0 0 5px #ff99cc, 0 0 10px #ff66cc; }
+    100% { text-shadow: 0 0 15px #ffccff, 0 0 25px #ff66ff; }
+  }
 </style>
 </head>
 <body>
@@ -125,10 +147,9 @@
     <div class="gift-box">
       <div class="gift-lid"></div>
     </div>
-    <div class="message">
-      ✨ I got you Aurum Pass Premium for you in Love and Deepspace game, open and check now ✨
-    </div>
-    <button onclick="alert('Surprise 🎁! This will be your Aurum Pass Premium link soon ❤️')">🕹️ Claim Gift</button>
+    <button onclick="alert('🎁 Surprise! This will be your Aurum Pass Premium link soon ❤️')">
+  🕹️ Claim Gift
+</button>
   </div>
 </div>
 
@@ -139,10 +160,16 @@ function updateCountdown(){
   const diff = birthday - now;
   const el = document.getElementById("countdown");
   if(diff <= 0){
-    el.textContent = "Today is your special day! 🎂💖";
-  } else {
-    const days = Math.ceil(diff/ (1000*60*60*24));
-    el.textContent = days+" days left until your birthday 🎉";
+  el.innerHTML = "<span class='sparkle'>✨ Today is your special day! 🎂💖 ✨</span>";
+} else {
+  const days = Math.ceil(diff/ (1000*60*60*24));
+  el.textContent = days+" days left until your birthday 🎉";
+}
+
+// restart animation each time
+el.style.animation = 'none';
+el.offsetHeight; // trigger reflow
+el.style.animation = null;
   }
 }
 updateCountdown();
