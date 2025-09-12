@@ -128,9 +128,12 @@
     <div class="message">
       ✨ Tap to claim ✨
     </div>
-    <button onclick="alert('Surprise 🎁! Open Love and Deepspace app to receive your gift ❤️')">🕹️ Claim Gift</button>
+    <button id="claimBtn">🕹️ Claim Gift</button>
   </div>
 </div>
+
+<!-- Birthday music -->
+<audio id="birthdaySong" src="https://www2.cs.uic.edu/~i101/SoundFiles/StarWars60.wav"></audio>
 
 <script>
 const birthday = new Date("2025-10-13T00:00:00");
@@ -161,12 +164,24 @@ function makeCandles(){
 }
 makeCandles();
 
+const song = document.getElementById("birthdaySong");
+
 document.getElementById("blowBtn").addEventListener("click", ()=>{
+  // start music
+  song.play();
+
+  // blow candles
   document.querySelectorAll(".flame").forEach(f=>f.classList.add("off"));
   setTimeout(()=>{
     document.getElementById("gift").style.display="block";
     launchHearts();
   },800);
+});
+
+document.getElementById("claimBtn").addEventListener("click", ()=>{
+  song.pause();
+  song.currentTime = 0;
+  alert('Surprise 🎁! Open Love and Deepspace app to receive your gift ❤️');
 });
 
 function launchHearts(){
@@ -184,3 +199,4 @@ function launchHearts(){
 </script>
 </body>
 </html>
+
