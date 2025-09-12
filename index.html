@@ -1,201 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>🎂 Happy Birthday Shreya!</title>
-<style>
-  body {
-    margin:0; 
-    display:flex; 
-    justify-content:center; 
-    align-items:center;
-    min-height:100vh;
-    background:linear-gradient(135deg,#ffe6f2,#e6f7ff,#fff0f5);
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    color:#444;
-    overflow:hidden;
-  }
-  .wrap {
-    text-align:center;
-    max-width:650px;
-    padding:20px;
-    background:rgba(255,255,255,0.85);
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,.1);
-  }
-  h1 { font-size:2em; margin-bottom:10px; color:#ff69b4; }
-  .countdown { font-size:1.2em; margin-bottom:20px; color:#666; }
-  .cake { position:relative; margin:20px auto; width:180px; height:120px; }
-  .cake-body {
-    position:absolute; bottom:0; width:100%; height:70%;
-    background:linear-gradient(180deg,#ffd6e7,#ffb6c1);
-    border-radius:10px;
-  }
-  .candles {
-    position:absolute; top:-30px; left:50%; transform:translateX(-50%);
-    display:flex; gap:15px;
-  }
-  .candle {
-    width:12px; height:40px; background:#fff; border-radius:3px;
-    position:relative;
-  }
-  .flame {
-    position:absolute; top:-18px; left:50%; transform:translateX(-50%);
-    width:14px; height:20px; background:radial-gradient(circle,#fff,#ffcc00 60%,#ff9900 80%);
-    border-radius:50% 50% 60% 60%;
-    animation:flicker .2s infinite alternate;
-  }
-  @keyframes flicker { to { transform:translateX(-50%) scale(1.1); } }
-  .flame.off { display:none; }
-
-  button {
-    margin-top:20px; padding:12px 20px; border:none; border-radius:10px;
-    font-size:1em; font-weight:bold; cursor:pointer;
-    background:#ff69b4; color:white;
-    box-shadow:0 5px 15px rgba(0,0,0,.2);
-    transition:0.2s;
-  }
-  button:hover { transform:scale(1.05); }
-
-  .gift { display:none; margin-top:30px; }
-  .letter {
-    text-align:left;
-    background:#fff8fc;
-    border:2px solid #ffb6d9;
-    border-radius:15px;
-    padding:15px 20px;
-    font-size:1em;
-    color:#444;
-    line-height:1.5em;
-    margin-bottom:25px;
-  }
-  .gift-box {
-    width:150px; height:120px; margin:auto;
-    background:linear-gradient(180deg,#ff9acd,#ff69b4);
-    border-radius:10px;
-    position:relative;
-  }
-  .gift-box:before {
-    content:""; position:absolute; top:0; left:50%; transform:translateX(-50%);
-    width:30px; height:100%; background:#fff; border-radius:5px;
-  }
-  .gift-lid {
-    width:160px; height:40px; background:linear-gradient(180deg,#ffb6c1,#ff69b4);
-    position:absolute; top:-40px; left:-5px; border-radius:10px;
-  }
-  .message { margin-top:20px; font-size:1.2em; color:#ff4081; font-weight:bold; }
-
-  /* floating hearts/stars */
-  .float {
-    position:fixed; bottom:-20px; font-size:24px;
-    animation: rise 5s linear infinite;
-    opacity:0.8;
-  }
-  @keyframes rise {
-    0% { transform:translateY(0) scale(1); opacity:1; }
-    100% { transform:translateY(-120vh) scale(1.4); opacity:0; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>Happy Birthday 🎂</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Antique Olive", sans-serif;
+      background: linear-gradient(to bottom right, #d6c9f5, #b3d0f7, #ffffff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .countdown {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #4a2c72;
+    }
+    .cake {
+      position: relative;
+      width: 160px;
+      height: 120px;
+      background: #fff;
+      border-radius: 0 0 15px 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .cake::before {
+      content: "";
+      position: absolute;
+      top: -30px;
+      left: 0;
+      width: 160px;
+      height: 30px;
+      background: pink;
+      border-radius: 15px 15px 0 0;
+    }
+    .sprinkles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+    .sprinkle {
+      position: absolute;
+      width: 6px;
+      height: 2px;
+      background: red;
+      border-radius: 2px;
+      transform: rotate(20deg);
+    }
+    .candle {
+      position: absolute;
+      top: -60px;
+      left: 70px;
+      width: 20px;
+      height: 60px;
+      background: #ff66b2;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .flame {
+      position: absolute;
+      top: -25px;
+      left: 4px;
+      width: 12px;
+      height: 25px;
+      background: radial-gradient(ellipse at center, orange, yellow);
+      border-radius: 50%;
+      animation: flicker 0.15s infinite alternate;
+    }
+    @keyframes flicker {
+      from { transform: scaleY(1); opacity: 1; }
+      to { transform: scaleY(1.2); opacity: 0.8; }
+    }
+    .instructions {
+      margin-top: 12px;
+      font-size: 18px;
+      color: #4a2c72;
+    }
+    .gift-box {
+      display: none;
+      margin-top: 25px;
+      padding: 20px;
+      background: #ffe0f0;
+      border: 2px solid #ff99cc;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      animation: pop 0.6s ease;
+    }
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 18px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #ff66b2;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #e0559f;
+    }
+  </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>🎉 Happy Birthday, Shreya! 🎉</h1>
-  <div class="countdown" id="countdown"></div>
+  <div class="countdown" id="wishCountdown">Make a Wish: 30</div>
 
   <div class="cake">
-    <div class="cake-body"></div>
-    <div class="candles" id="candles"></div>
+    <div class="candle" id="candle">
+      <div class="flame" id="flame"></div>
+    </div>
+    <div class="sprinkles" id="sprinkles"></div>
   </div>
 
-  <button id="blowBtn">💨 Tap to Blow Candles</button>
+  <div class="instructions">🎂 Tap the candle to blow the cake 🎂</div>
 
-  <div class="gift" id="gift">
-    <div class="letter">
-      <p><b>Dear Shreya,</b></p>
-      <p>
-        I would love to spoil you with gifts and cakes on your birthday, but since we live countries apart, I made this little surprise for you instead. ✨  
-        May your day be filled with joy, laughter, and countless blessings. 💖  
-        You mean so much to me, and I love you dearly. Every time you send me all those Instagram reels, it makes me so happy — they brighten my day more than you know. 🌸  
-        I’m sorry if I’m not always online or replying quickly, but please know that you’re always in my thoughts.  
-      </p>
-      <p>Thank you for being such a wonderful friend, and for being <i>you</i>. 🌟</p>
-    </div>
-
-    <div class="gift-box">
-      <div class="gift-lid"></div>
-    </div>
-    <div class="message">
-      ✨ Tap to claim ✨
-    </div>
-    <button id="claimBtn">🕹️ Claim Gift</button>
+  <div class="gift-box" id="giftBox">
+    <p>Dear Shreya, I would love to spoil you with gifts and cakes on your birthday, but since we live countries apart, I made this for you 🎁 Enjoy your day full of blessings! 💖  
+    I love you so much and you mean the world to me. You sending me reels always makes me smile! Sorry if I reply late sometimes — just know I’m always thinking of you 🌸 Thank you for being my friend. 💕</p>
+    <button id="claimGift">Claim Your Gift</button>
   </div>
-</div>
 
-<!-- Birthday music -->
-<audio id="birthdaySong" src="https://www.orangefreesounds.com/wp-content/uploads/2016/08/Happy-birthday-instrumental.mp3"></audio>
+  <audio id="birthdaySong" autoplay>
+    <source src="https://www.orangefreesounds.com/wp-content/uploads/2021/08/Happy-birthday-to-you-piano.mp3" type="audio/mpeg">
+  </audio>
 
-<script>
-const birthday = new Date("2025-10-13T00:00:00");
-function updateCountdown(){
-  const now = new Date();
-  const diff = birthday - now;
-  const el = document.getElementById("countdown");
-  if(diff <= 0){
-    el.textContent = "Today is your special day! 🎂💖";
-  } else {
-    const days = Math.ceil(diff/ (1000*60*60*24));
-    el.textContent = days+" days left until your birthday 🎉";
-  }
-}
-updateCountdown();
-setInterval(updateCountdown, 1000*60*60);
+  <script>
+    // Add sprinkles
+    const sprinkleColors = ["red", "blue", "yellow", "green", "purple"];
+    const sprinklesContainer = document.getElementById("sprinkles");
+    for (let i = 0; i < 30; i++) {
+      const s = document.createElement("div");
+      s.className = "sprinkle";
+      s.style.background = sprinkleColors[Math.floor(Math.random() * sprinkleColors.length)];
+      s.style.top = Math.random() * 100 + "px";
+      s.style.left = Math.random() * 150 + "px";
+      s.style.transform = `rotate(${Math.random() * 360}deg)`;
+      sprinklesContainer.appendChild(s);
+    }
 
-function makeCandles(){
-  const c = document.getElementById("candles");
-  for(let i=0;i<5;i++){
-    const div=document.createElement("div");
-    div.className="candle";
-    const flame=document.createElement("div");
-    flame.className="flame";
-    div.appendChild(flame);
-    c.appendChild(div);
-  }
-}
-makeCandles();
+    // Countdown timer
+    let countdown = 30;
+    const countdownEl = document.getElementById("wishCountdown");
+    const timer = setInterval(() => {
+      countdown--;
+      countdownEl.textContent = "Make a Wish: " + countdown;
+      if (countdown <= 0) {
+        clearInterval(timer);
+        countdownEl.textContent = "Now blow the candle!";
+      }
+    }, 1000);
 
-const song = document.getElementById("birthdaySong");
+    // Candle blowing
+    const candle = document.getElementById("candle");
+    const flame = document.getElementById("flame");
+    const giftBox = document.getElementById("giftBox");
+    const song = document.getElementById("birthdaySong");
 
-document.getElementById("blowBtn").addEventListener("click", ()=>{
-  // start music
-  song.play();
+    candle.addEventListener("click", () => {
+      if (countdown <= 0) {
+        flame.style.display = "none";
+        song.pause();
+        giftBox.style.display = "block";
+        document.querySelector(".cake").style.display = "none";
+        document.querySelector(".instructions").style.display = "none";
+      }
+    });
 
-  // blow candles
-  document.querySelectorAll(".flame").forEach(f=>f.classList.add("off"));
-  setTimeout(()=>{
-    document.getElementById("gift").style.display="block";
-    launchHearts();
-  },800);
-});
-
-document.getElementById("claimBtn").addEventListener("click", ()=>{
-  song.pause();
-  song.currentTime = 0;
-  alert('Surprise 🎁! Open Love and Deepspace app to receive your gift ❤️');
-});
-
-function launchHearts(){
-  const symbols=["💖","✨","🌸","⭐","💞"];
-  for(let i=0;i<20;i++){
-    const span=document.createElement("span");
-    span.className="float";
-    span.textContent=symbols[Math.floor(Math.random()*symbols.length)];
-    span.style.left=Math.random()*100+"vw";
-    span.style.animationDuration=(3+Math.random()*3)+"s";
-    document.body.appendChild(span);
-    setTimeout(()=>span.remove(),5000);
-  }
-}
-</script>
+    // Claim gift button
+    document.getElementById("claimGift").addEventListener("click", () => {
+      giftBox.style.display = "none";
+      alert("🎉 Surprise! This will be your Aurum Pass Premium link soon ✨");
+    });
+  </script>
 </body>
 </html>
