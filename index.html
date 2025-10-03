@@ -34,18 +34,24 @@
   }
   .candles {
     position:absolute; top:-30px; left:50%; transform:translateX(-50%);
-    display:flex; gap:15px;
+    display:flex; gap:20px;
   }
   .candle {
     width:12px; height:40px; background:#fff; border-radius:3px;
     position:relative;
   }
-  .flame {
-    position:absolute; top:-18px; left:50%; transform:translateX(-50%);
-    width:14px; height:20px; background:radial-gradient(circle,#fff,#ffcc00 60%,#ff9900 80%);
-    border-radius:50% 50% 60% 60%;
-    animation:flicker .2s infinite alternate;
-  }
+ .flame {
+  position:absolute; 
+  top:-18px; 
+  left:50%; 
+  transform:translateX(-50%);
+  width:14px; 
+  height:20px; 
+  background:radial-gradient(circle,#fff,#ffcc00 60%,#ff9900 80%);
+  border-radius:50% 50% 60% 60%;
+  animation:flicker .2s infinite alternate;
+  box-shadow: 0 0 10px #ffcc00, 0 0 20px #ff9900, 0 0 30px #ff6600; 
+}
   @keyframes flicker { to { transform:translateX(-50%) scale(1.1); } }
   .flame.off { display:none; }
 
@@ -154,9 +160,11 @@ setInterval(updateCountdown, 1000*60*60);
 
 function makeCandles(){
   const c = document.getElementById("candles");
-  for(let i=0;i<5;i++){
+  const colors = ["#ff69b4","#ffcc00","#00bfff","#32cd32","#ffa500","#800080"]; 
+  for(let i=0;i<6;i++){   // 6 candles for rainbow effect
     const div=document.createElement("div");
     div.className="candle";
+    div.style.background = colors[i % colors.length]; 
     const flame=document.createElement("div");
     flame.className="flame";
     div.appendChild(flame);
