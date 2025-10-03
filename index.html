@@ -148,11 +148,10 @@ src="https://www.orangefreesounds.com/wp-content/uploads/2016/08/Happy-birthday-
 const targetIST = new Date("2025-10-13T00:00:00+05:30");
 
 function checkUnlock() {
-  const now = new Date();
-  if (now >= targetIST) {
-    document.getElementById("locked").style.display = "none";
-    document.getElementById("mainContent").style.display = "block";
-  } else {
+  // Force unlock for testing
+  document.getElementById("locked").style.display = "none";
+  document.getElementById("mainContent").style.display = "block";
+} else {
     const diff = targetIST - now;
     const days = Math.floor(diff / (1000*60*60*24));
     const hours = Math.floor((diff / (1000*60*60)) % 24);
