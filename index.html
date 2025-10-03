@@ -16,14 +16,17 @@
     color:#444;
     overflow:hidden;
   }
-  .wrap {
+  #locked {
     text-align:center;
-    max-width:650px;
+    max-width:500px;
     padding:20px;
-    background:rgba(255,255,255,0.85);
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,.1);
+    background:rgba(255,255,255,0.9);
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+    font-size:1.2em;
+    color:#ff4081;
   }
+  .wrap { display:none; }
   h1 { font-size:2em; margin-bottom:10px; color:#ff69b4; }
   .countdown { font-size:1.2em; margin-bottom:20px; color:#666; }
   .cake { position:relative; margin:20px auto; width:180px; height:120px; }
@@ -99,7 +102,11 @@
 </style>
 </head>
 <body>
-<div class="wrap">
+<div id="locked">
+  ⏳ Please wait... This page will unlock on <b>13 October, 12:00 AM IST</b>.
+</div>
+
+<div class="wrap" id="mainContent">
   <h1>🎉 Happy Birthday, Shreya! 🎉</h1>
   <div class="countdown" id="countdown"></div>
 
@@ -136,7 +143,28 @@
 <audio id="birthdaySong" src="https://www.orangefreesounds.com/wp-content/uploads/2016/08/Happy-birthday-instrumental.mp3"></audio>
 
 <script>
-const birthday = new Date("2025-10-13T00:00:00");
+// Target time in IST (UTC+5:30)
+const targetIST = new Date("2025-10-13T00:00:00+05:30");
+
+function checkUnlock() {
+  const now = new Date();
+  if (now >= targetIST) {
+    document.getElementById("locked").style.display = "none";
+    document.getElementById("mainContent").style.display = "block";
+  } else {
+    const diff = targetIST - now;
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff / (1000*60*60)) % 24);
+    const mins = Math.floor((diff / (1000*60)) % 60);
+    const secs = Math.floor((diff / 1000) % 60);
+    document.getElementById("locked").innerHTML =
+      `⏳ Unlocks in <b>${days}d ${hours}h ${mins}m ${secs}s</b> (IST)`;
+  }
+}
+setInterval(checkUnlock, 1000);
+checkUnlock();
+
+const birthday = targetIST;
 function updateCountdown(){
   const now = new Date();
   const diff = birthday - now;
@@ -167,10 +195,7 @@ makeCandles();
 const song = document.getElementById("birthdaySong");
 
 document.getElementById("blowBtn").addEventListener("click", ()=>{
-  // start music
   song.play();
-
-  // blow candles
   document.querySelectorAll(".flame").forEach(f=>f.classList.add("off"));
   setTimeout(()=>{
     document.getElementById("gift").style.display="block";
