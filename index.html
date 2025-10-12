@@ -188,9 +188,10 @@ document.getElementById("blowBtn").addEventListener("click", ()=>{
   // blow candles
   document.querySelectorAll(".flame").forEach(f=>f.classList.add("off"));
   setTimeout(()=>{
-    document.getElementById("gift").style.display="block";
-    launchHearts();
-  },800);
+  document.getElementById("gift").style.display="block";
+  launchHearts();
+  setInterval(launchHearts, 4000); // loops hearts every 4 seconds
+},800);
 });
 
 document.getElementById("claimBtn").addEventListener("click", ()=>{
