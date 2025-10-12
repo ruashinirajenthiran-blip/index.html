@@ -126,10 +126,10 @@
     <div class="letter">
       <p><b>Dear Shreya,</b></p>
       <p>
-        I would love to spoil you with gifts and cakes on your birthday, but since we live countries apart, I made this little surprise for you instead. ✨  
-        May your day be filled with joy, laughter, and countless blessings. 💖  
-        You mean so much to me, and I love you dearly. Every time you send me all those Instagram reels, it makes me so happy — they brighten my day more than you know. 🌸  
-        I’m sorry if I’m not always online or replying quickly, but please know that you’re always in my thoughts.  
+        I would love to spoil you with gifts and cakes on your birthday, but since we live countries apart, I made this little surprise for you instead. 😁  
+        May your day be filled with joy, laughter, and countless blessings. 🙏🏻  
+        You mean so much to me, and I love you dearly. Every time you send me all those Instagram reels, it makes me so happy and they brighten my day more than you know. 🫂  
+        I’m sorry if I’m not always online or replying quickly, but please know that you’re always in my thoughts.  😘
       </p>
       <p>Thank you for being such a wonderful friend, and for being <i>you</i>. 🌟</p>
     </div>
@@ -167,7 +167,7 @@ setInterval(updateCountdown, 1000*60*60);
 function makeCandles(){
   const c = document.getElementById("candles");
   const colors = ["#ff69b4","#ffcc00","#00bfff","#32cd32","#ffa500","#800080"]; 
-  for(let i=0;i<6;i++){   // 6 candles for rainbow effect
+  for(let i=0;i<6;i++){   
     const div=document.createElement("div");
     div.className="candle";
     div.style.background = colors[i % colors.length]; 
@@ -190,7 +190,7 @@ document.getElementById("blowBtn").addEventListener("click", ()=>{
   setTimeout(()=>{
   document.getElementById("gift").style.display="block";
   launchHearts();
-  setInterval(launchHearts, 4000); // loops hearts every 4 seconds
+  setInterval(launchHearts, 4000); 
 },800);
 });
 
@@ -201,7 +201,7 @@ document.getElementById("claimBtn").addEventListener("click", ()=>{
 });
 
 function launchHearts(){
-  const symbols=["💖","✨","🌸","⭐","💞"];
+  const symbols=["❤️","✨","🌸","💫","💜"];
   for(let i=0;i<20;i++){
     const span=document.createElement("span");
     span.className="float";
